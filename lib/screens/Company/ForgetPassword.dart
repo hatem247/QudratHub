@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../Providers/EmployeeProvider.dart';
+import '../../Providers/CompanyProvider.dart';
 
-class EmployeeUpdatePasswordScreen extends StatefulWidget {
+class CompanyUpdatePasswordScreen extends StatefulWidget {
   @override
-  _EmployeeUpdatePasswordScreenState createState() => _EmployeeUpdatePasswordScreenState();
+  _CompanyUpdatePasswordScreenState createState() => _CompanyUpdatePasswordScreenState();
 }
 
-class _EmployeeUpdatePasswordScreenState extends State<EmployeeUpdatePasswordScreen> {
+class _CompanyUpdatePasswordScreenState extends State<CompanyUpdatePasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final employeeProvider = Provider.of<EmployeeProvider>(context);
+    final companyProvider = Provider.of<CompanyProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Update Password (Employee)"),
+        title: Text("Update Password (Company)"),
         centerTitle: true,
       ),
       body: Padding(
@@ -62,19 +62,19 @@ class _EmployeeUpdatePasswordScreenState extends State<EmployeeUpdatePasswordScr
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: employeeProvider.isLoading
+                  onPressed: companyProvider.isLoading
                       ? null
                       : () async {
                     if (_formKey.currentState!.validate()) {
-                      await employeeProvider.updatePassword(
+                      await companyProvider.updatePassword(
                         email: emailController.text,
                         password: passwordController.text,
                       );
 
-                      if (employeeProvider.errorMessage != null) {
+                      if (companyProvider.errorMessage != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(employeeProvider.errorMessage!),
+                            content: Text(companyProvider.errorMessage!),
                             backgroundColor: Colors.red,
                           ),
                         );
@@ -90,7 +90,7 @@ class _EmployeeUpdatePasswordScreenState extends State<EmployeeUpdatePasswordScr
                       }
                     }
                   },
-                  child: employeeProvider.isLoading
+                  child: companyProvider.isLoading
                       ? CircularProgressIndicator(color: Colors.white)
                       : Text("Update Password"),
                 ),

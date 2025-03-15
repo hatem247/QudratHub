@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../Providers/CompanyProvider.dart';
+import 'ForgetPassword.dart';
 import 'home_screen.dart';
 import 'signup_screen.dart';
 
@@ -100,7 +101,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         TextButton(
                           onPressed: () {
-                            // TODO: Implement Forgot Password Functionality
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => CompanyUpdatePasswordScreen()));
                           },
                           child: const Text('Forgot Password?'),
                         ),

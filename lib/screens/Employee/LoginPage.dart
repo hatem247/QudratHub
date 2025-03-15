@@ -150,7 +150,7 @@ class _SigninState extends State<Signin> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ForgetPasswordPage(),
+                              builder: (context) => EmployeeUpdatePasswordScreen(),
                             ),
                           );
                         },
